@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 <html>
+
 <head>
     <title>Blueprints</title>
     <meta charset="UTF-8">
@@ -11,25 +11,25 @@
     <script src="js/apimock.js"></script>
     <script src="js/app.js"></script>
 </head>
-    <body>
+
+<body>
+    <div class="container">
         <h1>Blueprints</h1>
-        <label for="author">Author:</label>
-        <input id="author" type="text" placeholder="Name">
-        <button type="button" onclick="app.actualizarPlanos()" id="getButton">Get blueprints</button>
-        <br/>
-        <label for="tabla">Author's Blueprints:</label>
-        <br/>
-        <table style="width:50%" id="tabla">
+        <label for="autor">Author:</label>
+        <input type="text" id="autor" placeholder="Name">
+        <button id="ingresar" onclick="app.run()">
+            Get Blueprints
+        </button>
+        <label for="table">Author's Blueprints:</label>
+        <table style="width:50%" id="table" class="table">
             <tr>
                 <th>Blueprints name</th>
                 <th>Number of points</th>
                 <th>Open</th>
             </tr>
-            <tbody>
-
-            </tbody>
+            <tbody id="cuerpo"></tbody>
         </table>
-        <br/>
-        <label>Total user points: 15</label>
-    </body>
+        <label>Total user points:</label>
+    </div>
+</body>
 </html>
