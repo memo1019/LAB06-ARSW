@@ -6,6 +6,7 @@ app = (function () {
     }
 
     function getBlueprintsByNameAndAuthor(author, bpName){
+        $("#current").text(bpName)
         return apimock.getBlueprintsByNameAndAuthor(author, bpName, pintar);
     }
 
@@ -33,6 +34,7 @@ app = (function () {
     }
 
     function generarTable(name,funcion) {
+        $("#nombre").text(name)
         $("#cuerpo").html("");
         var total=0
         funcion.map(function(f) {
@@ -41,7 +43,7 @@ app = (function () {
                   `<tr>
                     <td>`+f.name+`</td>
                     <td>`+f.points+`</td>`+
-                    "<td><form><button type='button' onclick='onclick=app.getBlueprintsByNameAndAuthor("+name+","+ f.name+")'>Open</button></form></td>"+
+                    "<td><form><button type='button' onclick='onclick=app.getBlueprintsByNameAndAuthor( \"" +name +'" , "' +f.name +"\")')'>Open</button></form></td>"+
                   `</tr>`
                 );
                 total+=f.points
@@ -50,6 +52,7 @@ app = (function () {
     }
 
     return {
-        run: run
+        run: run,
+        getBlueprintsByNameAndAuthor:getBlueprintsByNameAndAuthor
     }
 })();
