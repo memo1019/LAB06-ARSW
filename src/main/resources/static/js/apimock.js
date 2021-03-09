@@ -4,16 +4,21 @@ apimock=(function(){
     mockdata["maryweyland"]= [{author: "maryweyland",points: [{"x": 140,"y": 140},{"x": 115,"y": 115}],name: "house2"},{author: "maryweyland",points: [{"x": 140,"y": 140},{"x": 115,"y": 115}],name: "gear2"}];
     mockdata["federico"]= [{author: "federico",points: [{"x": 140,"y": 140},{"x": 115,"y": 115}],name: "house3"},{author: "federico",points: [{"x": 140,"y": 140},{"x": 115,"y": 115}],name: "gear3"}];
     mockdata["guillermo"]= [{author: "guillermo",points: [{"x": 140,"y": 140},{"x": 115,"y": 115}],name: "house4"},{author: "guillermo",points: [{"x": 140,"y": 140},{"x": 115,"y": 115}],name: "gear4"}];
+
+    function getBlueprintsByAuthor(name,callback){
+        return callback(
+            mockdata[name]
+        );
+    }
+
+    function getBlueprintsByNameAndAuthor(name,bpname,callback){
+         return callback(
+             mockdata[name].find(function(e){return e.name===bpname})
+         );
+     }
+
     return {
-        getBlueprintsByAuthor:function(name,callback){
-            return callback(
-                mockdata[name]
-            );
-        }
-//        getBlueprintsByNameAndAuthor:function(name,bpname,callback){
-//            return callback(
-//                mockdata[name].find(function(e){return e.name===bpname})
-//            );
-//        }
+        getBlueprintsByAuthor: getBlueprintsByAuthor,
+        getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor
     };
 })();
