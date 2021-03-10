@@ -1,24 +1,19 @@
+const Url = 'http://localhost:8080/blueprints/';
 apiclient = (function () {
+    var f=[]
     return {
         getBlueprintsByAuthor: function (author, callback) {
-             const promise = $.get({
-                 url: "/blueprints/" + author,
-                 contentType: "application/json",
-             });
-             promise.then(function (data) {
-                     callback(null, data);
-                 }
-             );
-         },
+                $.get(Url+author,function(data){
+                    f=data;
+                });
+                return callback(f)
+        },
 
-         getBlueprintsByNameAndAuthor: function (name, author, callback) {
-             const promise = $.get({
-                 url: "/blueprints/" + author + "/" + name,
-                 contentType: "application/json",
-             });
-             promise.then(function (data) {
-                     callback(null, data);
-                 }
-             );
-         }
+        getBlueprintsByNameAndAuthor: function (author, name, callback) {
+                $.get(Url+author+"/"+name,function(data){
+                    f=data;
+                });
+                return callback(f)
+        }
+    };
 })();
